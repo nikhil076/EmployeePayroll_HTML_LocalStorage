@@ -1,0 +1,22 @@
+window.addEventListener('DOMContentLoaded' , (event) => {
+    var name = document.querySelector('#name');
+    var textError = document.querySelector('.text-error');
+    name.addEventListener('input', function () {
+        if (name.value.length == 0) {
+            textError.textContent = "";
+            return;
+        }
+        try {
+            (new EmployeePayrollData()).name = name.value;
+            textError.textContent = "";
+        } catch (e) {
+            textError.textContent = e;
+        }
+    });
+
+    const salary = document.querySelector('#salary');
+    const salaryOutput = document.querySelector('#salaryOutput');
+    salary.addEventListener('input' , function(){
+        salaryOutput.textContent = salary.value;
+    });
+});
