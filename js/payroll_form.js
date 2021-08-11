@@ -86,3 +86,32 @@ var getInputElementValue = (id) => {
     let value = document.getElementById(id).value;
     return value;
 } 
+
+var resetForm = () => {
+    setValue('#name','');
+    unsetSelectedValues('[name=profile]');
+    unsetSelectedValues('[name=gender]');
+    unsetSelectedValues('[name=department]');
+    setValue('#salary','400000');
+    setValue('#notes','');
+    setValue('#day','01');
+    setValue('#month','jan');
+    setValue('#year','2020'); 
+}
+
+var unsetSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => {
+        item.checked = false;
+    });
+}
+
+var setValue = (id, value) => {
+    let element = document.querySelector(id);
+    element.value = value;
+    if (id == '#salary') {
+        var salary = document.querySelector('#salary');
+        var output = document.querySelector('.salary-output');
+        output.textContent = salary.value;
+    }
+}
